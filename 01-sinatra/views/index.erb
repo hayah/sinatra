@@ -6,6 +6,9 @@
       body {
         color: <%= color %>
       }
+      p {
+        font-size: 90px;
+      }
     </style>
   </head>
   <body>
@@ -13,6 +16,10 @@
     <%= message %>
     <br />
     Number of lives:<%= lives %>
+    <br />
+    <% if cheat %>
+      <p>😿<%= number  %>😿</p>
+    <% end %>
     <form>
       <input type="text" name="guess" />
       <input type="submit" value="Guess!" />

@@ -13,7 +13,8 @@ get '/' do
   erb :index, locals: { number: settings.number,
                         message: @message,
                         color: @color,
-                        lives: @@lives
+                        lives: @@lives,
+                        cheat: params[:cheat]
   }
 end
 
