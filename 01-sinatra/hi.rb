@@ -1,5 +1,6 @@
 require 'sinatra'
+require 'sinatra/reloader'
 
 get '/hi' do
-  'Hello world!'
+  'bye world!'
 end
