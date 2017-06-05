@@ -1,1 +1,18 @@
 <h1>Welcome to Finatra</h1>
+<% @fishes.each do |fish| %>
+  <h3><%= fish.name %></h3>
+  <p><%= fish.description %></p>
+<% end %>
+<hr />
+<h2>Add new fish:</h2>
+<form action="/" method="post">
+  <label for="name">Name</label>
+  <br />
+  <input type=text" id="name" name="name" />
+  <br />
+  <label for="description">Description</label>
+  <br />
+  <input type=text" id="description" name="description" />
+  <br />
+  <input type="submit" value="Add new fish" />
+</form>
