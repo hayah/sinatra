@@ -1,13 +1,13 @@
 require './idea'
 class IdeaBoxApp < Sinatra::Base
   get '/' do
-    erb :index
+    erb :index, locals: { ideas: Idea.all }
   end
 
   post '/' do
-    idea = Idea.new
+    idea = Idea.new(params['idea_title'], params['idea_description'])
     idea.save
-    'CREATING an idea!'
+    redirect '/'
   end
 
   not_found do
