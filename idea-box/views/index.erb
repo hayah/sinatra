@@ -17,10 +17,15 @@
 
     <h3>Existing Ideas</h3>
     <ul>
-      <% ideas.each do |idea| %>
+      <% ideas.each_with_index do |idea, id| %>
         <li>
+          <%= id %>
           <%= idea.title %>
           <%= idea.description %>
+          <form action="/<%= id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            <button type="sumbit" value="delete" />delete</button>
+          </form>
         </li>
       <% end %>
     </ul>
