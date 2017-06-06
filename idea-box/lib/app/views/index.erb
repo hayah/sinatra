@@ -4,19 +4,23 @@
   Your Idea:
   </p>
   <input type='text' name='idea[title]'/><br/>
+  <input type="hidden" name="" id="idea[rank]"/>
   <textarea name='idea[description]'></textarea><br/>
   <input type='submit'/>
 </form>
 
 <h3>Existing Ideas</h3>
 <ul>
-  <% ideas.each_with_index do |idea, id| %>
+  <% ideas.each do |idea| %>
     <li>
-      <%= id %>
+      <form action="/<%= idea.id %>/like" method="post" style="display: inline">
+        <input type="submit" value="+" />
+      [<%= idea.rank %>]
       <%= idea.title %>
       <%= idea.description %>
-      <a href="/<%= id %>/edit">Edit</a>
-      <form action="/<%= id %>" method="post">
+      </form>
+      <a href="/<%= idea.id %>/edit">Edit</a>
+      <form action="/<%= idea.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE" />
         <button type="sumbit" value="delete" />delete</button>
       </form>
