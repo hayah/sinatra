@@ -22,6 +22,7 @@
           <%= id %>
           <%= idea.title %>
           <%= idea.description %>
+          <a href="/<%= id %>/edit">Edit</a>
           <form action="/<%= id %>" method="post">
             <input type="hidden" name="_method" value="DELETE" />
             <button type="sumbit" value="delete" />delete</button>
