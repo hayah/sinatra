@@ -1,7 +1,7 @@
-require './idea'
-require './idea_store'
+require 'idea_box'
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
+  set :root, 'lib/app'
 
   get '/' do
     erb :index, locals: { ideas: IdeaStore.all, idea: Idea.new(params) }
