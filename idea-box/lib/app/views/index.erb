@@ -4,7 +4,6 @@
   Your Idea:
   </p>
   <input type='text' name='idea[title]'/><br/>
-  <input type="hidden" name="" id="idea[rank]"/>
   <textarea name='idea[description]'></textarea><br/>
   <input type='submit'/>
 </form>
@@ -16,6 +15,7 @@
       <form action="/<%= idea.id %>/like" method="post" style="display: inline">
         <input type="submit" value="+" />
       [<%= idea.rank %>]
+      <%= idea.rank.class %>
       <%= idea.title %>
       <%= idea.description %>
       </form>

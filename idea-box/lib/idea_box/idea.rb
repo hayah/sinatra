@@ -5,7 +5,7 @@ class Idea
   def initialize(attributes = {})
     @title = attributes['title']
     @description = attributes['description']
-    @rank = attributes['rank'] || 0
+    @rank = attributes['rank'].to_i || 0
     @id = attributes['id']
   end
 
