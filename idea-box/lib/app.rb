@@ -8,7 +8,10 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   post '/' do
-    idea = IdeaStore.create(params[:idea])
+    params[:idea][:tags] = params[:idea][:tags].split(',')
+    params[:idea][:tags] = params[:idea][:tags].map(&:strip)
+
+    IdeaStore.create(params[:idea])
     redirect '/'
   end
 
