@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: 'Cinzel', sans-serif;
+  text-align: center;
+  font-size: 40px;
+}
+
+.wrapper {
+  margin: 120px auto;
+  width: 600px;
+  height: 500px;
+  background-color: #c9ccd3;
+  border-radius: 8px;
+}
+
+input {
+  height: 25px;
+  padding-left: 10px;
+}
+
+button {
+  height: 30px;
+}
+
+#phrase {
+  margin-left: 25px;
+  margin-top: 20px;
+  width: 400px;
+}
+
+#step {
+  width: 50px;
+}
+
+.message {
+  width: 500px;
+  margin: 40px 0 0 25px;
+  padding: 5px;
+  padding-top: 5px;
+  background-color: #a9acb2;
+  border-radius: 8px;
+}
