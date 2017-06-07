@@ -8,6 +8,23 @@ class IdeaStore
     ideas
   end
 
+  def self.all_tags
+    tags = []
+    IdeaStore.all.each do |idea|
+      tags << idea.tags
+    end
+    tags.flatten.compact.uniq.sort.to_s
+  end
+
+  def self.find_by_tag(t)
+    ideas = []
+    IdeaStore.all.each do |idea|
+      i= [idea.title, idea.description, idea.rank, idea.tags, idea.id]
+      ideas << i if idea.tags.include?(t) rescue false
+    end
+    ideas
+  end
+
   def self.raw_ideas
     database.transaction do |db|
       db['ideas'] || []
