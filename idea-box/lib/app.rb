@@ -15,12 +15,19 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/'
   end
 
+  get '/:id' do |id|
+    idea =  IdeaStore.find(id.to_i)
+    erb :show, locals: { idea: idea, id: id }
+  end
+
   get '/:id/edit' do |id|
     idea = IdeaStore.find(id.to_i)
     erb :edit, locals: {idea: idea}
   end
 
   put '/:id' do |id|
+    params[:idea][:tags] = params[:idea][:tags].split(',')
+    params[:idea][:tags] = params[:idea][:tags].map(&:strip)
     IdeaStore.update(id.to_i, params[:idea])
     redirect '/'
   end
@@ -35,6 +42,17 @@ class IdeaBoxApp < Sinatra::Base
     idea.like!
     IdeaStore.update(id.to_i, idea.to_h)
     redirect '/'
+  end
+
+  get '/tags' do
+    tags = IdeaStore.all_tags
+    tags = tags.split(/\W/).select { |tag| tag =~ /\w/ }
+    erb :index_tag, locals: { tags: tags }
+  end
+
+  get '/tags/:t' do |t|
+    ideas = IdeaStore.find_by_tag(t)
+    erb :show_tag, locals: { ideas: ideas, tag: t }
   end
 
   not_found do

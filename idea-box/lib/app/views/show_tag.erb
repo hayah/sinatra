@@ -1,0 +1,5 @@
+<h2>Ideas with #<%= tag %> tag</h2>
+<% ideas.each do |idea| %>
+  <h3>[<a href="/<%=idea[4]%>"><%= idea[2] %></a>] <%= idea[0] %></h3>
+  <p><%= idea[1] %></p>
+<% end %>

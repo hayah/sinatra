@@ -6,6 +6,8 @@
   <label for='title'>Title: <br />
     <input type='text' id="title" name='idea[title]'/><br/>
   </label>
+  <label for="">Tags:<br />
+  <input type="text" name="idea[tags]" id="tags" value="" /></label><br />
   <label for='description'>Description:<br />
     <textarea name='idea[description]'></textarea><br/>
   </label>
@@ -16,10 +18,17 @@
 <ul>
   <% ideas.each do |idea| %>
     <li>
+      [<%= idea.rank %>]
       <form action="/<%= idea.id %>/like" method="post" style="display: inline">
         <input type="submit" value="+" />
-      [<%= idea.rank %>]
       <%= idea.title %>
+      [
+      <% if idea.tags %>
+        <% idea.tags.each do |tag| %>
+          <a href="/tags/<%= tag %>"><%= tag %></a>
+        <% end %>
+      <% end %>
+      ]
       <%= idea.description %>
       </form>
       <a href="/<%= idea.id %>/edit">Edit</a>
