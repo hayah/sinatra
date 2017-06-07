@@ -1,6 +1,6 @@
 require 'unicode'
 class CaesarsCipher
-  attr_reader :alphabet
+  attr_reader :alphabet, :string, :step
 
   def initialize(string, step, language = :en)
     @string = string

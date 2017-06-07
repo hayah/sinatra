@@ -3,13 +3,15 @@
     <h1>Caesar's Cipher</h1>
   </div>
   <div class="row">
-      <input type="text" name="caesar[phrase]" placeholder="Enter your phrase here" id="phrase" value="" />
-      <input type="text" name="caesar[step]" placeholder="Step" id="step" value="" />
+    <form action="/" method="POST">
+      <input type="text" name="string" placeholder="Enter your phrase here" id="phrase" value="<%= cipher.string %>" />
+      <input type="text" name="step" placeholder="Step" id="step" value="<%= cipher.step %>" />
       <button type="submit">Encode!</button>
+    </form>
   </div>
 
   <div class="message">
-    <p>Message</p>
+    <p><%= message %></p>
   </div>
 
 </div>
