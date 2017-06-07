@@ -22,7 +22,13 @@
       <form action="/<%= idea.id %>/like" method="post" style="display: inline">
         <input type="submit" value="+" />
       <%= idea.title %>
-      <%= idea.tags %>
+      [
+      <% if idea.tags %>
+        <% idea.tags.each do |tag| %>
+          <a href="/tags/<%= tag %>"><%= tag %></a>
+        <% end %>
+      <% end %>
+      ]
       <%= idea.description %>
       </form>
       <a href="/<%= idea.id %>/edit">Edit</a>
