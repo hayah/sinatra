@@ -1,6 +1,8 @@
 require 'yaml'
 
 class Hangman
+  @@total = 0
+  @@wins = 0
 
   attr_reader :secret_word, :incorrect_letters, :placeholder, :letters, :state
   def initialize
@@ -10,6 +12,7 @@ class Hangman
     @letters = ('a'..'z').to_a
     @save_file = 'save.yml'
     guess_word
+    @@total += 1
   end
 
   def play
@@ -24,6 +27,14 @@ class Hangman
       update_game_state
       check_game_state
     end
+  end
+
+  def self.total
+    @@total
+  end
+
+  def self.wins
+    @@wins
   end
   
   def lives
@@ -107,6 +118,7 @@ class Hangman
       File.delete('save.yml') if File.exists?('save.yml')
       play_again?
     elsif @state == 'win'
+      @@wins += 1
       puts "Grats! You won!"
       play_again?
     end

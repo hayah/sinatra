@@ -1,19 +1,23 @@
 require './models/hangman'
 set :slim, pretty: true
-set :session_secret, "something"
+# set :session_secret, "something"
+set :total, 0
+set :wins, 0
 
 enable :sessions
 
 get '/' do
-  slim :index
+  slim :index, locals: { hangman: session[:hangman] }
 end
 
 get '/new' do
+  settings.total += 1
   session[:hangman] = Hangman.new
   redirect '/game'
 end
 
 get '/game' do
+  session[:hangman] ||= Hangman.new
   slim :game, locals: {
     hangman: session[:hangman],
     alphabet: ('a'..'z').to_a
