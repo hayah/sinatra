@@ -2,11 +2,13 @@ require 'yaml'
 
 class Hangman
 
+  attr_reader :secret_word, :incorrect_letters, :placeholder
   def initialize
     @number_of_lives = 10
     @state = ''
     @incorrect_letters = []
     @save_file = 'save.yml'
+    guess_word
   end
 
   def play
@@ -21,6 +23,14 @@ class Hangman
       update_game_state
       check_game_state
     end
+  end
+
+  def available_letters
+    arr = []
+    ('a'..'z').to_a.each do |l|
+      arr <<  l if @incorrect_letters.include?(l)
+    end
+    arr
   end
 
   private
@@ -125,17 +135,11 @@ class Hangman
 
   def guess_word
     @secret_word =
-      File.readlines('../db/5desk.txt')
+      File.readlines('./5desk.txt')
       .map(&:strip)
       .select {|word| word.size > 4 && word.size < 13}
       .sample
       .downcase
     @placeholder = '_' * @secret_word.size
   end
-
-  def secret_word
-    @secret_word
-  end
 end
-g = Hangman.new
-g.play
