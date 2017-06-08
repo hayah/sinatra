@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box_sizing: border-box;
+}
+
+.wrapper {
+  margin: 200px auto;
+  width: 600px;
+  height: 250px;
+  background-color: #ccc;
+  text-align: center;
+  border-radius: 5px;
+}
+
+h1 {
+  font-family: 'Cabin', sans-serif;
+  font-weight: normal;
+  font-size: 40px;
+}
+
+button {
+  margin: 20px;
+  padding: 10px;
+  width: 150px;
+}
+
+.stats {
+  margin-top: 20px;
+}
