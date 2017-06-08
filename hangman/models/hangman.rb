@@ -6,13 +6,13 @@ class Hangman
 
   attr_reader :secret_word, :incorrect_letters, :placeholder, :letters, :state
   def initialize
+    @@total += 1
     @number_of_lives = 8
     @state = ''
     @incorrect_letters = []
     @letters = ('a'..'z').to_a
     @save_file = 'save.yml'
     guess_word
-    @@total += 1
   end
 
   def play

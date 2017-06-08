@@ -1,8 +1,6 @@
 require './models/hangman'
 set :slim, pretty: true
-# set :session_secret, "something"
-set :total, 0
-set :wins, 0
+set :session_secret, "something"
 
 enable :sessions
 
@@ -11,7 +9,6 @@ get '/' do
 end
 
 get '/new' do
-  settings.total += 1
   session[:hangman] = Hangman.new
   redirect '/game'
 end
@@ -36,6 +33,16 @@ end
 
 get '/lose' do
   slim :lose, locals: { hangman: session[:hangman] }
+end
+
+get '/save' do
+  session[:hangman].save_game
+  redirect '/'
+end
+
+get '/load' do
+  session[:hangman].load_game
+  redirect '/game'
 end
 
 def check_game_state(game)
