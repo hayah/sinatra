@@ -2,11 +2,12 @@ require 'yaml'
 
 class Hangman
 
-  attr_reader :secret_word, :incorrect_letters, :placeholder
+  attr_reader :secret_word, :incorrect_letters, :placeholder, :letters
   def initialize
     @number_of_lives = 10
     @state = ''
     @incorrect_letters = []
+    @letters = ('a'..'z').to_a
     @save_file = 'save.yml'
     guess_word
   end
@@ -38,8 +39,27 @@ class Hangman
   end
 
   def next_turn(letter)
-    take_one_life
-    change_placeholder
+    look_up(letter)
+    @letters.delete(letter)
+  end
+
+  def look_up(letter)
+    if @secret_word.include?(letter)
+      update_placeholder(letter)
+    else
+      take_one_life
+      @incorrect_letters << letter
+    end
+  end
+
+  def update_placeholder(letter)
+    @placeholder = @placeholder.chars.each_with_index.map do |underscore, i|
+      if @secret_word[i] == letter
+        @secret_word[i]
+      else
+        underscore
+      end
+    end.join('')
   end
 
   def save_game

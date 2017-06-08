@@ -1,11 +1,11 @@
 .image
   img src='10lives.png'
 .word
-  = placeholder
+  = hangman.placeholder
 .guess
   | Make a Guess <br>
   - alphabet.each do |letter|
-    - if available.include?(letter)
+    - if hangman.letters.include?(letter)
       a href="/game/#{letter}"
         button.letter type="submit" = letter
     - else
@@ -13,5 +13,5 @@
 .save
   | Lives:
   = hangman.lives
-  = secret
+  = hangman.secret_word
   button.common Save
