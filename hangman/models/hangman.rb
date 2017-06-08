@@ -24,16 +24,23 @@ class Hangman
       check_game_state
     end
   end
+  
+  def lives
+    @number_of_lives
+  end
 
   def available_letters
     arr = []
     ('a'..'z').to_a.each do |l|
-      arr <<  l if @incorrect_letters.include?(l)
+      arr <<  l unless @incorrect_letters.include?(l)
     end
     arr
   end
 
-  private
+  def next_turn(letter)
+    take_one_life
+    change_placeholder
+  end
 
   def save_game
     @save = YAML::dump(
@@ -70,6 +77,7 @@ class Hangman
     puts "Incorrect letters: #{@incorrect_letters.join(' ')}"
     puts "''''''''''''''''''"
   end
+
 
   def check_game_state
     if @state == 'lose'
@@ -122,6 +130,14 @@ class Hangman
     validate(@guess)
     puts "Da" if @secret_word.include?(@guess)
     @incorrect_letters << @guess unless @guess == 'S'
+  end
+
+  def check_letter(letter)
+    if @secret_word.include?(letter)
+      change_placeholder
+    else
+      @incorrect_letters << letter
+    end
   end
 
   def validate(input)

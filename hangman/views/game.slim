@@ -3,11 +3,15 @@
 .word
   = placeholder
 .guess
-  | available letters:
-  = available
-  button Guess
-.letters
-  | Used letters:
-  = incorrect
+  | Make a Guess <br>
+  - alphabet.each do |letter|
+    - if available.include?(letter)
+      a href="/game/#{letter}"
+        button.letter type="submit" = letter
+    - else
+      button.used disabled=true = letter
 .save
-  button Save
+  | Lives:
+  = hangman.lives
+  = secret
+  button.common Save

@@ -5,9 +5,9 @@
 }
 
 .wrapper {
-  margin: 200px auto;
-  width: 600px;
-  height: 600px;
+  margin: 140px auto;
+  width: 630px;
+  height: 700px;
   background-color: #ccc;
   text-align: center;
   border-radius: 5px;
@@ -19,7 +19,7 @@ h1 {
   font-size: 40px;
 }
 
-button {
+.common {
   margin: 20px;
   padding: 10px;
   width: 150px;
@@ -37,10 +37,24 @@ button {
 
 img {
   border-radius: 9px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .word {
   font-size: 65px;
   font-family: 'Sigmar One', sans-serif;
+}
+
+.letter, .used {
+  margin: 3px;
+  width: 28px;
+  padding: 10px;
+}
+
+.guess, .save {
+  margin-top: 25px;
+}
+
+.used {
+  background-color: #d1b5a1;
 }
