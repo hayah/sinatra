@@ -1,11 +1,13 @@
 .image
   img src='10lives.png'
 .word
-  | _w__a_r8_0__!
+  = placeholder
 .guess
-  | available letters
+  | available letters:
+  = available
   button Guess
 .letters
-  | Used letters: l e t t e r s
+  | Used letters:
+  = incorrect
 .save
   button Save
