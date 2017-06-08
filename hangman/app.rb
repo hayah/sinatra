@@ -22,5 +22,22 @@ end
 
 get '/game/:letter' do |letter|
   session[:hangman].next_turn(letter)
+  check_game_state(session[:hangman])
   redirect '/game'
+end
+
+get '/win' do
+  slim :win
+end
+
+get '/lose' do
+  slim :lose, locals: { hangman: session[:hangman] }
+end
+
+def check_game_state(game)
+  if game.state == 'win'
+    redirect '/win'
+  elsif game.state == 'lose'
+    redirect '/lose'
+  end
 end

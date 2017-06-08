@@ -51,7 +51,7 @@ img {
   padding: 10px;
 }
 
-.guess, .save {
+.guess, .save, .lose, .win {
   margin-top: 25px;
 }
 

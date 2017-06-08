@@ -2,7 +2,7 @@ require 'yaml'
 
 class Hangman
 
-  attr_reader :secret_word, :incorrect_letters, :placeholder, :letters
+  attr_reader :secret_word, :incorrect_letters, :placeholder, :letters, :state
   def initialize
     @number_of_lives = 8
     @state = ''
@@ -41,6 +41,7 @@ class Hangman
   def next_turn(letter)
     look_up(letter)
     @letters.delete(letter)
+    update_game_state
   end
 
   def look_up(letter)
