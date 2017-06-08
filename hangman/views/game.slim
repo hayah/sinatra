@@ -11,7 +11,8 @@
     - else
       button.used disabled=true = letter
 .save
-  | Lives:
+  | Lives: 
   = hangman.lives
-  = hangman.secret_word
   button.common Save
+  a href="/new"
+    button.new.common ↺ New Game

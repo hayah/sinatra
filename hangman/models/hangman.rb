@@ -4,7 +4,7 @@ class Hangman
 
   attr_reader :secret_word, :incorrect_letters, :placeholder, :letters
   def initialize
-    @number_of_lives = 10
+    @number_of_lives = 8
     @state = ''
     @incorrect_letters = []
     @letters = ('a'..'z').to_a
