@@ -7,7 +7,7 @@
 .wrapper {
   margin: 200px auto;
   width: 600px;
-  height: 250px;
+  height: 600px;
   background-color: #ccc;
   text-align: center;
   border-radius: 5px;
@@ -27,4 +27,20 @@ button {
 
 .stats {
   margin-top: 20px;
+}
+
+.image {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+}
+
+img {
+  border-radius: 9px;
+  margin-top: 5px;
+}
+
+.word {
+  font-size: 65px;
+  font-family: 'Sigmar One', sans-serif;
 }
