@@ -4,3 +4,8 @@ h1 Welcome
     button.common ↺ New Game
   a href="/load"
     button.common 💾 Load
+  p Games played (wins):
+  = cookies[:played]
+  |  ( 
+  = cookies[:wins]
+  |  )

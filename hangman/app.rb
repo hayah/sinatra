@@ -5,10 +5,13 @@ set :session_secret, "something"
 enable :sessions
 
 get '/' do
+  cookies[:played] ||= 0
+  cookies[:wins] ||= 0
   slim :index, locals: { hangman: session[:hangman] }
 end
 
 get '/new' do
+  cookies[:played] = cookies[:played].to_i + 1
   session[:hangman] = Hangman.new
   redirect '/game'
 end
