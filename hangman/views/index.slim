@@ -3,6 +3,9 @@ img src="index.gif"
 .buttons
   a href="/new"
     button.common ↺ New Game
+  - if hangman.state == 'in_progress'
+    a href="/game"
+      button.common Continue
   a href="/load"
     button.common 💾 Load
   p Games played (wins):

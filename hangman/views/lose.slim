@@ -4,6 +4,8 @@ p.lose
   strong
     = hangman.secret_word.capitalize
   |  was a secret word.
-form action="/new" method="GET"
-  button.common type="submit" ↺ New Game
+a href='/new'
+  button.common ↺ New Game
+a href='/'
+  button.common Main Menu
 - hangman.state = 'lose'

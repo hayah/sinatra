@@ -1,12 +1,17 @@
 - if hangman.state == 'win'
   h1 Congratulations! You won.
   img src="win.png"
-  p.win Do you want to play again?
-  form action="/new" method="GET"
-    button.common type="submit" ↺ New Game
+  br
+  a href = '/new'
+    button.common ↺ New Game
+  a href = '/'
+    button.common Main Menu
 - else
   h1 Huh? You didn't win yet!
   p.win Go back.
-  - sleep 5
-  - redirect '/'
-
+  - if hangman.state == 'in_progress'
+    a href = '/game'
+      button.common Continue
+  - else
+    a href = '/'
+      button.common Main Menu
