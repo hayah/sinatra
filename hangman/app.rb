@@ -31,7 +31,7 @@ get '/game/:letter' do |letter|
 end
 
 get '/win' do
-  slim :win
+  slim :win, locals: {hangman: session[:hangman]}
 end
 
 get '/lose' do

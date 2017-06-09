@@ -9,7 +9,7 @@ class Hangman
   def initialize
     @@total += 1
     @number_of_lives = 8
-    @state = ''
+    @state = 'in_progress'
     @incorrect_letters = []
     @letters = ('a'..'z').to_a
     @save_file = 'save.yml'

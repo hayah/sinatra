@@ -1,5 +1,12 @@
-h1 Congratulations! You won.
-img src="win.png"
-p.win Do you want to play again?
-form action="/new" method="GET"
-  button.common type="submit" ↺ New Game
+- if hangman.state == 'win'
+  h1 Congratulations! You won.
+  img src="win.png"
+  p.win Do you want to play again?
+  form action="/new" method="GET"
+    button.common type="submit" ↺ New Game
+- else
+  h1 Huh? You didn't win yet!
+  p.win Go back.
+  - sleep 5
+  - redirect '/'
+
