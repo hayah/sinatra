@@ -50,6 +50,7 @@ end
 
 def check_game_state(game)
   if game.state == 'win'
+    cookies[:wins] = cookies[:wins].to_i + 1
     redirect '/win'
   elsif game.state == 'lose'
     redirect '/lose'
