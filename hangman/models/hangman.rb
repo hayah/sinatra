@@ -4,7 +4,8 @@ class Hangman
   @@total = 0
   @@wins = 0
 
-  attr_reader :secret_word, :incorrect_letters, :placeholder, :letters, :state
+  attr_reader :secret_word, :incorrect_letters, :placeholder, :letters
+  attr_accessor :state
   def initialize
     @@total += 1
     @number_of_lives = 8
@@ -47,6 +48,10 @@ class Hangman
       arr <<  l unless @incorrect_letters.include?(l)
     end
     arr
+  end
+
+  def new_secret
+    guess_word
   end
 
   def next_turn(letter)
